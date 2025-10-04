@@ -1,4 +1,0 @@
-- Create a plan
-- Think what insights from LinkedIn Job Board
-- Collect + Process: Web scraping, Load into spreadsheet, update regularly using Airflow
-- Analyze

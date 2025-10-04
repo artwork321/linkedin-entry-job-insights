@@ -83,9 +83,9 @@ def scrape_linkedin_jobs():
         })  
 
     df = pd.DataFrame(job_data)
-    df.to_csv('linkedin_jobs.csv', index=False)
+    df.to_csv('../raw_data/linkedin_jobs.csv', index=False)
 
-    with open("linkedin_jobs.html", "w", encoding="utf-8") as f:
+    with open("../raw_data/linkedin_jobs.html", "w", encoding="utf-8") as f:
         f.write(driver.page_source)
 
     driver.quit()
