@@ -6,8 +6,6 @@ import pandas as pd
 
 def scrape_linkedin_jobs():
     driver = webdriver.Chrome()
-    options = webdriver.ChromeOptions()
-    options.add_argument("--start-maximized")
 
     driver.get("https://www.linkedin.com/jobs/search/?keywords=analyst&location=Australia")
     driver.implicitly_wait(10)
@@ -83,9 +81,9 @@ def scrape_linkedin_jobs():
         })  
 
     df = pd.DataFrame(job_data)
-    df.to_csv('../raw_data/linkedin_jobs.csv', index=False)
+    df.to_csv('data_files/linkedin_jobs.csv')
 
-    with open("../raw_data/linkedin_jobs.html", "w", encoding="utf-8") as f:
+    with open("data_files/linkedin_jobs.html", "w", encoding="utf-8") as f:
         f.write(driver.page_source)
 
     driver.quit()
