@@ -43,6 +43,25 @@ def scrape_linkedin_jobs():
     submit_button = driver.find_element(By.CLASS_NAME, "filter__submit-button")
     driver.execute_script("arguments[0].click();", submit_button)
 
+    # Filter for past month
+    experience_filter = driver.find_element(
+        By.XPATH, '//button[contains(@aria-label, "Date posted filter options")]'
+    )
+    experience_filter.click()
+
+    # Wait for the options container
+    options_container = wait.until(
+        EC.presence_of_element_located((By.CSS_SELECTOR, ".filter-values-container__filter-values"))
+    )
+
+    # Wait for the label to appear and be clickable
+    past_month = wait.until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, 'label[for="f_TPR-1"]'))
+    )
+    past_month.click()
+    submit_button = driver.find_element(By.CLASS_NAME, "filter__submit-button")
+    driver.execute_script("arguments[0].click();", submit_button)
+
     # Scroll down to load more jobs
     while (not driver.find_element(By.CSS_SELECTOR, "button[aria-label='See more jobs']").is_displayed()):
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
