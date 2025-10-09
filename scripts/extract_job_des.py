@@ -5,7 +5,7 @@ import re
 
 def extract_job_descriptions():
     # Read job_url
-    job_listings = pd.read_csv('data_files/linkedin_jobs.csv')
+    job_listings = pd.read_csv('data_files/raw/linkedin_jobs.csv')
     job_descriptions = []
 
     # Extract job description
@@ -30,6 +30,6 @@ def extract_job_descriptions():
 
             job_descriptions.append(job_des_text.strip())
 
-    pd.DataFrame(job_descriptions, columns=["Raw Job Description"]).to_csv('data_files/linkedin_job_descriptions.csv')
+    pd.DataFrame(job_descriptions, columns=["Raw Job Description"]).to_csv('data_files/raw/linkedin_job_descriptions.csv')
 
 extract_job_descriptions()

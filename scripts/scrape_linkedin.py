@@ -4,10 +4,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
 
-def scrape_linkedin_jobs():
+def scrape_linkedin_jobs(link="https://www.linkedin.com/jobs/search/?keywords=analyst&location=Australia"):
     driver = webdriver.Chrome()
 
-    driver.get("https://www.linkedin.com/jobs/search/?keywords=analyst&location=Australia")
+    driver.get(link)
     driver.implicitly_wait(10)
     wait = WebDriverWait(driver, 10)
 
@@ -100,9 +100,9 @@ def scrape_linkedin_jobs():
         })  
 
     df = pd.DataFrame(job_data)
-    df.to_csv('data_files/linkedin_jobs.csv')
+    df.to_csv('data_files/raw/linkedin_jobs.csv')
 
-    with open("data_files/linkedin_jobs.html", "w", encoding="utf-8") as f:
+    with open("data_files/raw/linkedin_jobs.html", "w", encoding="utf-8") as f:
         f.write(driver.page_source)
 
     driver.quit()
