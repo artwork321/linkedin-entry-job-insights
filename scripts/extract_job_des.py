@@ -31,5 +31,3 @@ def extract_job_descriptions():
             job_descriptions.append(job_des_text.strip())
 
     pd.DataFrame(job_descriptions, columns=["Raw Job Description"]).to_csv('data_files/raw/linkedin_job_descriptions.csv')
-
-extract_job_descriptions()

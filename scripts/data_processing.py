@@ -26,3 +26,7 @@ def clean_data():
 
     df.to_csv("data_files/curated/linkedin_jobs.csv", index=False)
     print("Data cleaned and saved to data_files/curated/linkedin_jobs.csv")
+
+def clean_job_descriptions():
+    df = pd.read_csv("data_files/raw/linkedin_job_descriptions.csv")
+
