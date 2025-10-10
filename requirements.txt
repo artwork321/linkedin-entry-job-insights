@@ -2,3 +2,6 @@ selenium
 pandas
 requests
 beautifulsoup4
+snowflake-connector-python
+spacy
+sklearn

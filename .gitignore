@@ -1,3 +1,11 @@
-env
+# Airflow junk
+logs/
+airflow.db
+airflow-webserver.pid
+unittests.cfg
+
+venv
 Configs/*.cfg
 model/*
+__pycache__/
+.env
