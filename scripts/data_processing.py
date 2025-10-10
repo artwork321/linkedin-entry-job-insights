@@ -1,5 +1,6 @@
 import pandas as pd
 import re
+import spacy
 
 def clean_data():
     df = pd.read_csv("data_files/raw/linkedin_jobs.csv")
@@ -29,4 +30,23 @@ def clean_data():
 
 def clean_job_descriptions():
     df = pd.read_csv("data_files/raw/linkedin_job_descriptions.csv")
+    skills_extracted = []
+
+    for index, row in df.iterrows():
+        job_des = row["Raw Job Description"]
+
+        # Lowercase the text
+        job_des = job_des.lower()
+
+        # Load model
+        model = spacy.load("model/model-last")
+
+        doc = model(job_des)
+        skills_extracted.append(set([ent.text for ent in doc.ents]))
+
+        for ent in doc.ents:
+            print(ent.text, ent.label_)
+
+    df["Extracted Skills"] = skills_extracted
+    df.to_csv("data_files/curated/linkedin_job_descriptions_with_skills.csv", index=False)
 
