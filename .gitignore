@@ -10,7 +10,7 @@ airflow/__pycache__/
 webserver_config.py
 
 # Python
-__pycache__/
+__pycache__
 .pytest_cache/
 .coverage
 .env
