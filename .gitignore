@@ -1,11 +1,39 @@
-# Airflow junk
+# Airflow specific
 logs/
 airflow.db
 airflow-webserver.pid
 unittests.cfg
+airflow.cfg
+*.pid
+airflow/logs/
+airflow/__pycache__/
+webserver_config.py
 
-venv
-Configs/*.cfg
-model/*
+# Python
 __pycache__/
+.pytest_cache/
+.coverage
 .env
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Project specific data files
+include/data_files/raw/*
+
+# Keep curated and model data
+!include/data_files/curated/*.csv
+
+# Model files
+include/data_files/model/*
+
+# Config files
+config/*.cfg
+Configs/*.cfg
+
+# Docker
+.docker/

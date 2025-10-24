@@ -1,19 +1,18 @@
-from scripts import scrape_linkedin, extract_job_des, data_processing, ner_model, upload_data
+from include import upload_data, data_processing, scrape_linkedin
 import spacy
 
+
+
 # Run the scraping script to get job listings
-# scrape_linkedin.scrape_linkedin_jobs()
-
-# # Extract job descriptions from the scraped job listings
-# extract_job_des.extract_job_descriptions()
-
-# # Clean and process the scraped data
-# data_processing.clean_data()
+scraper = scrape_linkedin.LinkedinJobScraper(page_size=1, output_path="include/data_files/raw")
+scraper.scrape_linkedin_jobs()
+scraper.extract_job_descriptions()
 
 # Clean job descriptions
-# ner_model.prepare_ner_data(input_json_path="data_files/ner_data/ner.json")
+cleaner = data_processing.LinkedinJobCleaner(input_path="include/data_files/raw", output_path="include/data_files/curated",
+                                             model_path="include/data_files/model/model-last")
+cleaner.clean_job_descriptions()
+cleaner.clean_job_details()
 
-# data_processing.clean_job_descriptions()
-# data_processing.clean_data()
-
-upload_data.upload_to_snowflake()
+# Upload data to snowflake
+# upload_data.upload_to_snowflake(input_path="include/data_files/curated")

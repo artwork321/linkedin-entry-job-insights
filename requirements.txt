@@ -1,7 +1,8 @@
 selenium
+webdriver-manager>=4.0.1
 pandas
 requests
 beautifulsoup4
 snowflake-connector-python
 spacy
-sklearn
+scikit-learn
