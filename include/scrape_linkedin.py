@@ -25,9 +25,12 @@ class LinkedinJobScraper:
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
         
-        service = Service(ChromeDriverManager().install())
-        driver = webdriver.Chrome(service=service, options=options)
-
+        if self.output_path.startswith("/opt/airflow"):
+            service = Service(ChromeDriverManager().install())
+            driver = webdriver.Chrome(service=service, options=options)
+        else:
+            driver = webdriver.Chrome(options=options)
+            
         driver.get(self.BASE_URL)
         driver.implicitly_wait(10)
         wait = WebDriverWait(driver, 10)

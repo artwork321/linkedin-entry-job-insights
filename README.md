@@ -47,23 +47,13 @@ linkedin-entry-job-insights/
 
 1. Create and activate a virtual environment:
 
-```powershell
-python -m venv .venv; .\.venv\Scripts\Activate.ps1
-```
-
 2. Install dependencies:
 
 ```powershell
 pip install --upgrade pip; pip install -r requirements.txt
 ```
 
-3. Install Apache Airflow (if you plan to run the Airflow DAGs):
-
-```powershell
-pip install "apache-airflow[celery]==3.1.0" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-3.1.0/constraints-3.10.txt"
-```
-
-4. Install a spaCy model:
+3. Install a spaCy model:
 
 ```powershell
 pip install spacy
