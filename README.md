@@ -94,13 +94,27 @@ Training outputs:
 
 ## Quick local run & Airflow
 
-The pipeline is defined in `dags/linkedin_jobs_dag.py` and includes these main tasks:
+You can run the pipeline in two ways:
+
+### Option 1: Run with main.py (Quick CSV output)
+For a quick local run that generates CSV files without Airflow or Snowflake:
+```powershell
+python main.py
+```
+This will:
+1. Scrape LinkedIn job listings
+2. Process the descriptions
+3. Extract skills using the NER model
+4. Save results to CSV files in `include/data_files/curated/`
+
+### Option 2: Run with Airflow (Full Pipeline)
+The complete pipeline is defined in `dags/linkedin_jobs_dag.py` and includes these tasks:
 1. Scrape LinkedIn job listings
 2. Clean and process job descriptions
 3. Extract entities using NER model
 4. Upload structured data to Snowflake
 
-### Run with Docker
+#### Run with Docker
 
 Docker is the recommended way to run the full pipeline. The `docker-compose.yaml` sets up:
 - Airflow webserver and scheduler
