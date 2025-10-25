@@ -72,6 +72,9 @@ pip install spacy
 
 ## Configure and Train NER Model
 
+For a detailed walkthrough of spaCy NER model training, you can refer to this tutorial:
+[Custom Named Entity Recognition with spaCy](https://www.youtube.com/watch?v=3LAY7rocJmg)
+
 1. Update paths in `ner_config/base_config.cfg`:
    - Find the `paths` section
    - Update the path to `ner_data` folder with your absolute path
