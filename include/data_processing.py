@@ -74,13 +74,15 @@ class LinkedinJobCleaner:
                 for ent in doc.ents:
                     print(ent.text, ent.label_)
             else:
-                skills_extracted.append(set())  
+                skills_extracted.append([])  
 
         df.rename(columns={
             'Job Link': 'job_link',
             'Raw Job Description': 'job_description'
         }, inplace=True)
         df["skills"] = skills_extracted
+
+        df["skills"] = df["skills"].apply(lambda x: ', '.join(x) if x else "")
 
         df.to_csv(f"{self.output_path}/linkedin_job_descriptions_with_skills.csv", index=False)
 
